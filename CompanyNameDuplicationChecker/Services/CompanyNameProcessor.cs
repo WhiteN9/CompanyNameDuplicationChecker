@@ -54,31 +54,33 @@
         }
 
         // Check if two company names are potential duplicates based on Jaccard index
-        // https://stackoverflow.com/questions/9453731/how-to-calculate-distance-similarity-measure-of-given-2-strings
-        // https://medium.com/@mayurdhvajsinhjadeja/jaccard-similarity-34e2c15fb524
         // The threshold is adjustable, set to lower for more potential duplications
 
         private static bool IsPotentialDuplicate(string companyName1, string companyName2, double threshold = 0.8)
         {
-            // Calculate the Jaccard Index
+            // 1. Calculate the Jaccard Index
             double index = CalculateJaccardIndex(companyName1, companyName2);
 
-            // Return true if index is above the threshold
+            // 2. Return true if the index value is above the threshold
             return index >= threshold;
         }
 
         // Calculate Jaccard similarity between two strings
+        // This code snippet is from Googling and StackOverFlow, adjusted to be suitable for the solution
+        // https://stackoverflow.com/questions/9453731/how-to-calculate-distance-similarity-measure-of-given-2-strings
+        // https://medium.com/@mayurdhvajsinhjadeja/jaccard-similarity-34e2c15fb524
+
         private static double CalculateJaccardIndex(string string1, string string2)
         {
-            // Split the string into sets of words by whitespace
+            // 1. Split the string into sets of words by whitespace
             HashSet<string> set1 = new HashSet<string>(string1.Split(' ', StringSplitOptions.RemoveEmptyEntries));
             HashSet<string> set2 = new HashSet<string>(string2.Split(' ', StringSplitOptions.RemoveEmptyEntries));
 
-            // Find the intersection and union
+            // 2. Find the intersection and union values
             int intersection = set1.Intersect(set2).Count();
             int union = set1.Union(set2).Count();
 
-            // Compute and return the Jaccard Index
+            // 3. Compute and return the Jaccard Index
             return (double)intersection / union;
         }
     }
