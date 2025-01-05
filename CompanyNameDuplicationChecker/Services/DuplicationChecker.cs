@@ -6,16 +6,16 @@ namespace CompanyNameDuplicationChecker.Services
     {
         public string NormalizeName(string companyName)
         {
-            // 1: Convert to lowercase
+            // 1: Standardize lettercase
             companyName = companyName.ToLowerInvariant();
 
             // 2: Standardize punctuation (ensure commas are followed by a space)
-            companyName = Regex.Replace(companyName, @"\s*,\s*", ", "); // Ensure proper spacing after commas
+            companyName = Regex.Replace(companyName, @"\s*,\s*", ", ");
 
             // 3: Standardize whitespace (convert multiple spaces to a single space)
-            companyName = Regex.Replace(companyName, @"\s+", " "); // Replace multiple spaces with a single one
+            companyName = Regex.Replace(companyName, @"\s+", " ");
 
-            // 4: Standardize legal control terms (convert "Co." to "Company", "Inc." to "Incorporated", etc.)
+            // 4: Standardize legal control terms (convert "Co." to "Company", etc.)
             companyName = companyName.Replace(" co.", " company")
                                      .Replace(" inc.", " incorporated")
                                      .Replace(" llc", " limited liability company")

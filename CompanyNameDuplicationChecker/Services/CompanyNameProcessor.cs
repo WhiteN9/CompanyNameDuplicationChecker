@@ -42,7 +42,7 @@
                 for (int j = i + 1; j < normalizedCompanyNames.Count; j++)
                 {
                     if (IsPotentialDuplicate(normalizedCompanyNames[i], normalizedCompanyNames[j]))
-                    potentialDuplicates.Add((normalizedCompanyNames[i], normalizedCompanyNames[j]));
+                        potentialDuplicates.Add((normalizedCompanyNames[i], normalizedCompanyNames[j]));
                 }
             }
             return potentialDuplicates;
