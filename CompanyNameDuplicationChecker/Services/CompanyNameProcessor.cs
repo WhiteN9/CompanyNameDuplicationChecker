@@ -53,9 +53,11 @@
             return File.ReadAllLines(filePath).ToList();
         }
 
-
         // Check if two company names are potential duplicates based on Jaccard index
+        // https://stackoverflow.com/questions/9453731/how-to-calculate-distance-similarity-measure-of-given-2-strings
+        // https://medium.com/@mayurdhvajsinhjadeja/jaccard-similarity-34e2c15fb524
         // The threshold is adjustable, set to lower for more potential duplications
+
         private static bool IsPotentialDuplicate(string companyName1, string companyName2, double threshold = 0.8)
         {
             // Calculate the Jaccard Index

@@ -37,7 +37,10 @@ namespace SensorTower.CompanyNameDuplicationChecker
             string path = Path.Combine(currentDirectory, "Input", "advertisers.txt");
 
             CompanyNameProcessor companyNameProcessor = new CompanyNameProcessor();
+
+            // Normalize the company names for better matching, https://stackoverflow.com/a/6401068
             List<string> normalizedCompanyNames = companyNameProcessor.ReadAndNormalizeCompanyNames(path);
+
             List<(string, string)> potentialDuplicates = companyNameProcessor.FindPotentialDuplicates(normalizedCompanyNames);
 
             Console.WriteLine("Potential Duplicates:");
